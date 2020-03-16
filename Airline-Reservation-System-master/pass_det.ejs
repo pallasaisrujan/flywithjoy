@@ -1,0 +1,295 @@
+<html>
+    <title>FlyWithJoy</title>
+    <head>
+        <style>
+            body{
+                background-image: url("images/gorre2.jpg");
+                background-size: 100%;
+            }
+            #logout{
+                position: absolute;
+                border-radius: 5pt;
+                left:93.5%;
+                top:8pt;
+                width:60pt;
+                height:25pt;
+                background-color: royalblue;
+                border-color: royalblue;
+                color: white;
+                font-size: 12pt;
+                font-weight: bold;
+                z-index: 10;
+            }
+            #top{
+                position: absolute;
+                border-radius: 0pt;
+                background: rgba(255,255,255,0.3);
+                border-style: solid;
+                border-color:transparent;
+                border-width: 2pt;
+                border-radius: 5pt;
+                top:5pt;
+                width:98.5%;
+                height:50pt;
+                z-index: 1;
+            }
+            #header{
+                font-size: 40pt;
+                font-weight: bold;
+                font-family: consolas;
+            }
+            #usrname{
+                position: absolute;
+                z-index: 4;
+                left: 85%;
+                top:33pt;
+                font-size: 13pt;
+                font-family: arial;
+            }
+            #nav{
+                position: absolute;
+                border-radius: 0pt;
+                background: rgba(255,255,255,0.3);
+                border-style: solid;
+                border-color:transparent;
+                border-width: 2pt;
+                border-radius: 5pt;
+                top:70pt;
+                width:98.5%;
+                height:20pt;
+                z-index: 1;
+            }
+            #home{
+                position: absolute;
+                background: transparent;
+                left: 0pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #pnr{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 750pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #home:hover,#prof:hover,#book:hover,#prm:hover,#mybk:hover,#pnr:hover{
+                cursor: pointer;
+            }
+            #prof{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 150pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #book{
+                position: absolute;
+                background: transparent;
+                background: rgba(255,255,255,0.5);
+                top: 0pt;
+                left: 300pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #prm{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 450pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #name0{
+                position: absolute;
+                border-radius: 5pt;
+                border-color: royalblue;
+                border-style: solid;
+                left:50pt;
+                top:150pt;
+                width:250pt;
+                height:30pt;
+                padding-left: 10pt;
+            }
+            #age0{
+                position: absolute;
+                border-radius: 5pt;
+                border-color: royalblue;
+                border-style: solid;
+                left:350pt;
+                top:150pt;
+                width:80pt;
+                height:30pt;
+                padding-left: 10pt;
+            }
+            #mybk{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 600pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #gender0{
+                position: absolute;
+                border-radius: 5pt;
+                border-color: royalblue;
+                border-width: 2pt;
+                border-style: solid;
+                left:480pt;
+                top:150pt;
+                width:80pt;
+                height:30pt;
+                padding-left: 10pt;
+            }
+            #nation0{
+                position: absolute;
+                border-radius: 5pt;
+                border-color: royalblue;
+                border-width: 2pt;
+                border-style: solid;
+                left:610pt;
+                top:150pt;
+                width:150pt;
+                height:30pt;
+                padding-left: 10pt;
+            }
+            #add{
+                font-size: 25pt;
+                position: absolute;
+                left: 780pt;
+                top: 150pt;
+                width: 30pt;
+                height: 30pt;
+                background-color: royalblue;
+                border-color: royalblue;
+                border-radius: 20pt;
+                border-style: groove;
+            }
+            #sub{
+                font-size: 25pt;
+                position: absolute;
+                left: 820pt;
+                top: 150pt;
+                width: 30pt;
+                height: 30pt;
+                background-color: royalblue;
+                border-color: royalblue;
+                border-radius: 20pt;
+                border-style: groove;
+            }
+            #title{
+                font-size: 15pt;
+                font-weight: bold;
+                font-family: arial;
+                position: absolute;
+                left: 60pt;
+                top: 110pt;
+            }
+            #cnf_tkts{
+                font-size: 15pt;
+                position: absolute;
+                left: 900pt;
+                top: 150pt;
+                width: 200pt;
+                height: 30pt;
+                background-color: royalblue;
+                border-color: royalblue;
+                border-radius: 20pt;
+                border-style: groove;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="login.js"></script>
+        <script>
+            var i = 1;
+            var ntkt = "<%= ntkts %>";
+            function addp(){
+                if(i>=ntkt){
+                    return;
+                }
+                var psgr = document.getElementById('psngr0');
+                var clone = psgr.cloneNode(true);
+                //clone.childNodes[1].id = "name" + i;
+                //clone.childNodes[3].id = "age" + i;
+                //clone.childNodes[5].id = "nation" + i;
+                //clone.childNodes[7].id = "gender" + i;
+                clone.id = 'psngr' + i;
+                //clone.childNodes[1].name = "name" + i;
+                //clone.childNodes[3].name = "age" + i;
+                //clone.childNodes[5].name = "nation" + i;
+                //clone.childNodes[7].name = "gender" + i;
+                var a1 = 150 + (50*i);
+                a1 = a1.toString() + "pt";
+                clone.childNodes[1].style.top = a1;
+                clone.childNodes[3].style.top = a1;
+                clone.childNodes[5].style.top = a1;
+                clone.childNodes[7].style.top = a1;
+                psgr.parentNode.appendChild(clone);
+                i = i + 1;
+            }
+            function subp(){
+                if((i-1)==0){
+                    return;
+                }
+                var psgr2 = document.getElementById('psngr' + (i-1));
+                psgr2.parentNode.removeChild(psgr2);
+                i = i - 1;
+            }
+        </script>
+        <form action="logout" method="POST">
+            <button id="logout" type="submit">Logout</button>
+        </form>
+        <div id="top">
+            <label id="header">FlyWithJoy</label>
+            <label id="usrname">Hello, <%=name1%></label>
+        </div>
+        <div id="nav">
+            <form action="nav_home" method="POST">
+                <button id="home" type="submit">Home</button>
+            </form>
+            <form action="nav_profile" method="POST">
+                <button id="prof" type="submit">Profile</button>
+            </form>
+            <form action="nav_booking" method="POST">
+                <button id="book" type="submit">Book Your Ticket</button>
+            </form>
+            <form action="nav_promo" method="POST">
+                <button id="prm" type="submit">Promo Codes</button>
+            </form>
+            <form action="nav_mybook" method="POST">
+                <button id="mybk" type="submit">My Bookings</button>
+            </form>
+            <form action="nav_pnr" method="POST">
+                <button id="pnr" type="submit">PNR Status</button>
+            </form>
+        </div>
+        <div id="travel">
+        <p id="title">Traveller(s) information</p>
+        <form action="cnf_book" method="POST">
+        <div id="psngr0">
+      <input id="name0" name="name" placeholder="Name">
+      <input id="age0" name="age" placeholder="Age">
+      <input id="nation0" name="nation" placeholder="Nationality">
+      <select id="gender0" name="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+        </select>   
+    </div>
+    <button id="cnf_tkts" type="submit">Proceed To Payment.</button>
+</form>
+    <button id="add" title="Add Passenger" type="submit" onclick="addp()">+</button>
+    <button id="sub" title="Remove Passenger" type="submit" onclick="subp()">-</button>
+    </div>
+    </body>
+</html>

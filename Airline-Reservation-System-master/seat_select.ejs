@@ -1,0 +1,547 @@
+<html>
+    <title>FlyWithJoy</title>
+    <head>
+        <style>
+            body{
+                background-image: url("/images/gorre2.jpg");
+                background-size: 100%;
+            }
+            #logout{
+                position: absolute;
+                border-radius: 5pt;
+                left:1080pt;
+                top:8pt;
+                width:60pt;
+                height:25pt;
+                background-color: royalblue;
+                border-color: royalblue;
+                color: white;
+                font-size: 12pt;
+                font-weight: bold;
+                z-index: 10;
+            }
+            #top{
+                position: absolute;
+                border-radius: 0pt;
+                background: rgba(255,255,255,0.3);
+                border-style: solid;
+                border-color:transparent;
+                border-width: 2pt;
+                border-radius: 5pt;
+                top:5pt;
+                width:98.5%;
+                height:50pt;
+                z-index: 1;
+            }
+            #header{
+                font-size: 40pt;
+                font-weight: bold;
+                font-family: consolas;
+            }
+            #usrname{
+                position: absolute;
+                z-index: 4;
+                left: 85%;
+                top:33pt;
+                font-size: 13pt;
+                font-family: arial;
+            }
+            #nav{
+                position: absolute;
+                border-radius: 0pt;
+                background: rgba(255,255,255,0.3);
+                border-style: solid;
+                border-color:transparent;
+                border-width: 2pt;
+                border-radius: 5pt;
+                top:70pt;
+                width:98.5%;
+                height:20pt;
+                z-index: 1;
+            }
+            #home{
+                position: absolute;
+                background: transparent;
+                left: 0pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #pnr{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 750pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #home:hover,#prof:hover,#book:hover,#prm:hover,#mybk:hover,#pnr:hover{
+                cursor: pointer;
+            }
+            #prof{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 150pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #book{
+                position: absolute;
+                background: transparent;
+                background: rgba(255,255,255,0.5);
+                top: 0pt;
+                left: 300pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #mybk{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 600pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #prm{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 450pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #psdt{
+                position: absolute;
+                border-radius: 5pt;
+                left:535pt;
+                top:160pt;
+                width:60pt;
+                height:25pt;
+                background-color: royalblue;
+                border-color: royalblue;
+                color: white;
+                font-size: 12pt;
+                font-weight: bold;
+                z-index: 10;
+            }
+
+            /* css for seat selection */
+
+            *, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+.plane {
+  margin: 30px auto;
+  max-width: 300px;
+}
+
+.cockpit {
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  border-bottom: 5px solid #d8d8d8;
+}
+.cockpit:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 500px;
+  width: 100%;
+  border-radius: 50%;
+  border-right: 5px solid #d8d8d8;
+  border-left: 5px solid #d8d8d8;
+}
+.cockpit h1 {
+  width: 60%;
+  margin: 100px auto 35px auto;
+}
+
+.exit {
+  position: relative;
+  height: 50px;
+}
+.exit:before, .exit:after {
+  content: "EXIT";
+  font-size: 14px;
+  line-height: 18px;
+  padding: 0px 2px;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  display: block;
+  position: absolute;
+  background: green;
+  color: white;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.exit:before {
+  left: 0;
+}
+.exit:after {
+  right: 0;
+}
+
+.fuselage {
+  border-right: 5px solid #d8d8d8;
+  border-left: 5px solid #d8d8d8;
+}
+
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.seats {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+.seat {
+  display: flex;
+  flex: 0 0 14.28571428571429%;
+  padding: 5px;
+  position: relative;
+}
+.seat:nth-child(3) {
+  margin-right: 14.28571428571429%;
+}
+.seat input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+}
+.seat input[type=checkbox]:checked + label {
+  background: #bada55;
+  -webkit-animation-name: rubberBand;
+  animation-name: rubberBand;
+  animation-duration: 300ms;
+  animation-fill-mode: both;
+}
+.seat input[type=checkbox]:disabled + label {
+  background: #dddddd;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+.seat input[type=checkbox]:disabled + label:after {
+  content: "X";
+  text-indent: 0;
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+.seat input[type=checkbox]:disabled + label:hover {
+  box-shadow: none;
+  cursor: not-allowed;
+}
+.seat label {
+  display: block;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.5rem;
+  padding: 4px 0;
+  background: #F42536;
+  border-radius: 5px;
+  animation-duration: 300ms;
+  animation-fill-mode: both;
+}
+.seat label:before {
+  content: "";
+  position: absolute;
+  width: 75%;
+  height: 75%;
+  top: 1px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+}
+.seat label:hover {
+  cursor: pointer;
+  box-shadow: 0 0 0px 2px #5C6AFF;
+}
+
+@-webkit-keyframes rubberBand {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes rubberBand {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    -webkit-transform: scale3d(0.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    -webkit-transform: scale3d(1.05, 0.95, 1);
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+.rubberBand {
+  -webkit-animation-name: rubberBand;
+  animation-name: rubberBand;
+}
+        </style>
+        <script>
+          var seat_disabledz = "<%= sts2 %>";
+          var seat_disabled = [];
+          seat_disabled = JSON.parse(seat_disabledz.replace(/&#34;/g,'\"'));
+          function zz1(){
+            for(var m=0;m<seat_disabled.length;m++){
+            document.getElementById(seat_disabled[m]).disabled = "true";
+          }
+          }
+        </script>
+    </head>
+    <body onload="zz1()">
+        <script src="login.js"></script>
+        <form action="logout" method="POST">
+            <button id="logout" type="submit">Logout</button>
+        </form>
+        <div id="top">
+            <label id="header">FlyWithJoy</label>
+            <label id="usrname">Hello, <%=name1%></label>
+        </div>
+        <div id="nav">
+            <form action="nav_home" method="POST">
+                <button id="home" type="submit">Home</button>
+            </form>
+            <form action="nav_profile" method="POST">
+                <button id="prof" type="submit">Profile</button>
+            </form>
+            <form action="nav_booking" method="POST">
+                <button id="book" type="submit">Book Your Ticket</button>
+            </form>
+            <form action="nav_promo" method="POST">
+                <button id="prm" type="submit">Promo Codes</button>
+            </form>
+            <form action="nav_mybook" method="POST">
+              <button id="mybk" type="submit">My Bookings</button>
+          </form>
+          <form action="nav_pnr" method="POST">
+            <button id="pnr" type="submit">PNR Status</button>
+        </form>
+            <form action="pass_details" method="POST">
+              <button id="psdt" type="submit">Proceed</button>
+
+            <!--Seat Booking-->
+
+            <div class="plane">
+                <div class="cockpit">
+                  <h1>Please select a seat</h1>
+                </div>
+                <div class="exit exit--front fuselage">
+                  
+                </div>
+                <ol class="cabin fuselage">
+                  <li class="row row--1">
+                    <ol class="seats" type="A">
+                      <li class="seat">
+                        <input name="seat" value="1A" type="checkbox" id="1A" />
+                        <label for="1A">1A</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="1B" type="checkbox" id="1B" />
+                        <label for="1B">1B</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="1C" type="checkbox" id="1C" />
+                        <label for="1C">1C</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="1D" type="checkbox" id="1D" />
+                        <label for="1D">1D</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="1E" type="checkbox" id="1E" />
+                        <label for="1E">1E</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="1F" type="checkbox" id="1F" />
+                        <label for="1F">1F</label>
+                      </li>
+                    </ol>
+                  </li>
+                  <li class="row row--2">
+                    <ol class="seats" type="A">
+                      <li class="seat">
+                        <input name="seat" value="2A" type="checkbox" id="2A" />
+                        <label for="2A">2A</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="2B" type="checkbox" id="2B" />
+                        <label for="2B">2B</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="2C" type="checkbox" id="2C" />
+                        <label for="2C">2C</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="2D" type="checkbox" id="2D" />
+                        <label for="2D">2D</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="2E" type="checkbox" id="2E" />
+                        <label for="2E">2E</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="2F" type="checkbox" id="2F" />
+                        <label for="2F">2F</label>
+                      </li>
+                    </ol>
+                  </li>
+                  <li class="row row--3">
+                    <ol class="seats" type="A">
+                      <li class="seat">
+                        <input name="seat" value="3A" type="checkbox" id="3A" />
+                        <label for="3A">3A</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="3B" type="checkbox" id="3B" />
+                        <label for="3B">3B</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="3C" type="checkbox" id="3C" />
+                        <label for="3C">3C</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="3D" type="checkbox" id="3D" />
+                        <label for="3D">3D</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="3E" type="checkbox" id="3E" />
+                        <label for="3E">3E</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="3F" type="checkbox" id="3F" />
+                        <label for="3F">3F</label>
+                      </li>
+                    </ol>
+                  </li>
+                  <li class="row row--4">
+                    <ol class="seats" type="A">
+                      <li class="seat">
+                        <input name="seat" value="4A" type="checkbox" id="4A" />
+                        <label for="4A">4A</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="4B" type="checkbox" id="4B" />
+                        <label for="4B">4B</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="4C" type="checkbox" id="4C" />
+                        <label for="4C">4C</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="4D" type="checkbox" id="4D" />
+                        <label for="4D">4D</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="4E" type="checkbox" id="4E" />
+                        <label for="4E">4E</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="4F" type="checkbox" id="4F" />
+                        <label for="4F">4F</label>
+                      </li>
+                    </ol>
+                  </li>
+                  <li class="row row--5">
+                    <ol class="seats" type="A">
+                      <li class="seat">
+                        <input name="seat" value="5A" type="checkbox" id="5A" />
+                        <label for="5A">5A</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="5B" type="checkbox" id="5B" />
+                        <label for="5B">5B</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="5C" type="checkbox" id="5C" />
+                        <label for="5C">5C</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="5D" type="checkbox" id="5D" />
+                        <label for="5D">5D</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="5E" type="checkbox" id="5E" />
+                        <label for="5E">5E</label>
+                      </li>
+                      <li class="seat">
+                        <input name="seat" value="5F" type="checkbox" id="5F" />
+                        <label for="5F">5F</label>
+                      </li>
+                    </ol>
+                  </li>
+                </ol>
+                <div class="exit exit--back fuselage">
+                  
+                </div>
+              </div>
+            </form>
+        </div>
+    </body>
+</html>

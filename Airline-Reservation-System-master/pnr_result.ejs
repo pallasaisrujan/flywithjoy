@@ -1,0 +1,311 @@
+<html>
+    <title>FlyWithJoy</title>
+    <head>
+        <style>
+            body{
+                background-image: url("/images/gorre2.jpg");
+                background-size: 100%;
+            }
+            #mybk{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 600pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #pnr{
+                position: absolute;
+                background: transparent;
+                background: rgba(255,255,255,0.5);
+                top: 0pt;
+                left: 750pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #logout{
+                position: absolute;
+                border-radius: 5pt;
+                left:1080pt;
+                top:8pt;
+                width:60pt;
+                height:25pt;
+                background-color: royalblue;
+                border-color: royalblue;
+                color: white;
+                font-size: 12pt;
+                font-weight: bold;
+                z-index: 10;
+            }
+            #top{
+                position: absolute;
+                border-radius: 0pt;
+                background: rgba(255,255,255,0.3);
+                border-style: solid;
+                border-color:transparent;
+                border-width: 2pt;
+                border-radius: 5pt;
+                top:5pt;
+                width:98.5%;
+                height:50pt;
+                z-index: 1;
+            }
+            #header{
+                font-size: 40pt;
+                font-weight: bold;
+                font-family: consolas;
+            }
+            #usrname{
+                position: absolute;
+                z-index: 4;
+                left: 85%;
+                top:33pt;
+                font-size: 13pt;
+                font-family: arial;
+            }
+            #nav{
+                position: absolute;
+                border-radius: 0pt;
+                background: rgba(255,255,255,0.3);
+                border-style: solid;
+                border-color:transparent;
+                border-width: 2pt;
+                border-radius: 5pt;
+                top:70pt;
+                width:98.5%;
+                height:20pt;
+                z-index: 1;
+            }
+            #home{
+                position: absolute;
+                background: transparent;
+                left: 0pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #home:hover,#prof:hover,#book:hover,#prm:hover,#mybk:hover,#pnr:hover{
+                cursor: pointer;
+            }
+            #prof{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 150pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #book{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 300pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #prm{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 450pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #in0{
+                position: absolute;
+                border-radius: 5pt;
+                left: 150pt;
+                top: 140pt;
+                width: 300pt;
+                height: 30pt;
+                border-color: royalblue;
+                border-style: solid;
+                cursor: text;
+                padding-left: 10pt;
+            }
+            table{
+                position: absolute;
+                left: 50pt;
+                top:200pt;
+                width: 80%;
+                background:rgba(255, 255, 255, 0.6);
+            }
+            td{
+                font-size: 13pt;
+                text-align: center;
+            }
+            table,th,td{
+                border: 2px solid black;
+                border-collapse: collapse;
+            }
+            #error{
+                position: absolute;
+                left: 430pt;
+                top:260pt;
+                font-size: 15pt;
+                font-family: arial;
+                font-weight: bold;
+            }
+            #pndt{
+                position: absolute;
+                top:180pt;
+                left: 80pt;
+                font-size: 14pt;
+                font-weight: bold;
+                font-family: arial;
+            }
+            #pnfn{
+                position: absolute;
+                top:180pt;
+                left: 280pt;
+                font-size: 14pt;
+                font-weight: bold;
+                font-family: arial;
+            }
+            #pnfr{
+                position: absolute;
+                top:180pt;
+                left: 480pt;
+                font-size: 14pt;
+                font-weight: bold;
+                font-family: arial;
+            }
+            #pnto{
+                position: absolute;
+                top:180pt;
+                left: 680pt;
+                font-size: 14pt;
+                font-weight: bold;
+                font-family: arial;
+            }
+        </style>
+        <script>
+            var i = 0;
+            var pnr_pnam  = [];
+            var pnr_pnamz = "<%= pnr_pnam2 %>";
+            pnr_pnam = JSON.parse(pnr_pnamz.replace(/&#34;/g,'\"'));
+            //console.log(pcode);
+            var pnr_pag = [];
+            var pnr_pagz = "<%= pnr_pag2 %>";
+            pnr_pag = JSON.parse(pnr_pagz.replace(/&#34;/g,'\"'));
+            var pnr_pgen = [];
+            var pnr_pgenz = "<%= pnr_pgen2 %>";
+            pnr_pgen = JSON.parse(pnr_pgenz.replace(/&#34;/g,'\"'));
+            var pnr_pnati = [];
+            var pnr_pnatiz = "<%= pnr_pnati2 %>";
+            pnr_pnati = JSON.parse(pnr_pnatiz.replace(/&#34;/g,'\"'));
+            var pnr_psea = [];
+            var pnr_pseaz = "<%= pnr_psea2 %>";
+            pnr_psea = JSON.parse(pnr_pseaz.replace(/&#34;/g,'\"'));
+            var n = "<%= len5 %>";
+            //console.log(n);
+            //console.log(pnr_pnam);
+            i = 0;
+            function st(){
+                //console.log(fname);
+                if(n == 0){
+                    document.getElementById('error').innerHTML = "Invalid PNR Number.";
+                    return;
+                }
+                document.getElementById('pnm0').innerHTML = pnr_pnam[0];
+                document.getElementById('pag0').innerHTML = pnr_pag[0];
+                document.getElementById('pgen0').innerHTML = pnr_pgen[0];
+                document.getElementById('pnati0').innerHTML = pnr_pnati[0];
+                document.getElementById('psea0').innerHTML = pnr_psea[0];
+                i = i + 1;
+                while(i!=n){
+                createRow(i);
+                i = i + 1;
+            }
+            }
+            function createRow(i) {
+      var row = document.createElement('tr'); // create row node
+      var col = document.createElement('td'); // create column node
+      var col2 = document.createElement('td'); // create second column node
+      var col3 = document.createElement('td');
+      var col4 = document.createElement('td');
+      var col5 = document.createElement('td');
+      row.appendChild(col); // append first column to row
+      row.appendChild(col2); // append second column to row
+      row.appendChild(col3);
+      row.appendChild(col4);
+      row.appendChild(col5);
+      col.id = "pnm" + i;
+      col2.id = "pag" + i;
+      col3.id = "pgen" + i;
+      col4.id = "pnati" + i;
+      col5.id = "psea" + i;
+      col.innerHTML = pnr_pnam[i]; // put data in first column
+      col2.innerHTML = pnr_pag[i]; // put data in second column
+      col3.innerHTML = pnr_pgen[i];
+      col4.innerHTML = pnr_pnati[i];
+      col5.innerHTML = pnr_psea[i];
+      var table = document.getElementById("pnr_res1"); // find table to append to
+      table.appendChild(row); // append row to table
+    }
+        </script>
+    </head>
+    <body onload="st()">
+        <script src="login.js"></script>
+        <form action="logout" method="POST">
+            <button id="logout" type="submit">Logout</button>
+        </form>
+        <div id="top">
+            <label id="header">FlyWithJoy</label>
+            <label id="usrname">Hello, <%=name1%></label>
+        </div>
+        <div id="nav">
+            <form action="nav_home" method="POST">
+                <button id="home" type="submit">Home</button>
+            </form>
+            <form action="nav_profile" method="POST">
+                <button id="prof" type="submit">Profile</button>
+            </form>
+            <form action="nav_booking" method="POST">
+                <button id="book" type="submit">Book Your Ticket</button>
+            </form>
+            <form action="nav_promo" method="POST">
+                <button id="prm" type="submit">Promo Codes</button>
+            </form>
+            <form action="nav_mybook" method="POST">
+                <button id="mybk" type="submit">My Bookings</button>
+            </form>
+            <form action="nav_pnr" method="POST">
+                <button id="pnr" type="submit">PNR Status</button>
+            </form>
+        </div>
+        <form action="pnr_chk" method="POST">
+        <input id="in0" type="text" value="<%= pnr_tkid %>" placeholder="Enter Ticket ID" disabled>
+    </form>
+    <label id="pndt">Departure Date: <%= pnr_dt %></label>
+    <label id="pnfn">Flight Name: <%= pnr_fn %></label>
+    <label id="pnfr">Source: <%= pnr_pfrom %></label>
+    <label id="pnto">Destination: <%= pnr_pto %></label>
+    <table id="pnr_res">
+        <thead>
+            <tr>
+                <th>Passenger Name</th>
+                <th>Passenger Age</th>
+                <th>Passenger Gender</th>
+                <th>Passenger Nationality</th>
+                <th>Seat Booked</th>
+            </tr>
+        </thead>
+        <tbody id="pnr_res1">
+            <tr id="r0">
+                <td id="pnm0"></td>
+                <td id="pag0"></td>
+                <td id="pgen0"></td>
+                <td id="pnati0"></td>
+                <td id="psea0"></td>
+            </tr>
+        </tbody>
+    </table>
+    <p id="error"></p>
+    </body>
+</html>

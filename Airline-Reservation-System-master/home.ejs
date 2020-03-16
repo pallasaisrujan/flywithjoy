@@ -1,0 +1,151 @@
+<html>
+    <title>FlyWithJoy</title>
+    <head>
+        <style>
+            body{
+                background-image: url("/images/gorre2.jpg");
+                background-size: 100%;
+            }
+            #mybk{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 600pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #logout{
+                position: absolute;
+                border-radius: 5pt;
+                left:1080pt;
+                top:8pt;
+                width:60pt;
+                height:25pt;
+                background-color: royalblue;
+                border-color: royalblue;
+                color: white;
+                font-size: 12pt;
+                font-weight: bold;
+                z-index: 10;
+            }
+            #top{
+                position: absolute;
+                border-radius: 0pt;
+                background: rgba(255,255,255,0.3);
+                border-style: solid;
+                border-color:transparent;
+                border-width: 2pt;
+                border-radius: 5pt;
+                top:5pt;
+                width:98.5%;
+                height:50pt;
+                z-index: 1;
+            }
+            #header{
+                font-size: 40pt;
+                font-weight: bold;
+                font-family: consolas;
+            }
+            #usrname{
+                position: absolute;
+                z-index: 4;
+                left: 85%;
+                top:33pt;
+                font-size: 13pt;
+                font-family: arial;
+            }
+            #nav{
+                position: absolute;
+                border-radius: 0pt;
+                background: rgba(255,255,255,0.3);
+                border-style: solid;
+                border-color:transparent;
+                border-width: 2pt;
+                border-radius: 5pt;
+                top:70pt;
+                width:98.5%;
+                height:20pt;
+                z-index: 1;
+            }
+            #home{
+                position: absolute;
+                background: transparent;
+                background: rgba(255,255,255,0.5);
+                left: 0pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #pnr{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 750pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #home:hover,#prof:hover,#book:hover,#prm:hover,#mybk:hover,#pnr:hover{
+                cursor: pointer;
+            }
+            #prof{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 150pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #book{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 300pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #prm{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 450pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="login.js"></script>
+        <form action="logout" method="POST">
+            <button id="logout" type="submit">Logout</button>
+        </form>
+        <div id="top">
+            <label id="header">FlyWithJoy</label>
+            <label id="usrname">Hello, <%=name1%></label>
+        </div>
+        <div id="nav">
+            <form action="nav_home" method="POST">
+                <button id="home" type="submit">Home</button>
+            </form>
+            <form action="nav_profile" method="POST">
+                <button id="prof" type="submit">Profile</button>
+            </form>
+            <form action="nav_booking" method="POST">
+                <button id="book" type="submit">Book Your Ticket</button>
+            </form>
+            <form action="nav_promo" method="POST">
+                <button id="prm" type="submit">Promo Codes</button>
+            </form>
+            <form action="nav_mybook" method="POST">
+                <button id="mybk" type="submit">My Bookings</button>
+            </form>
+            <form action="nav_pnr" method="POST">
+                <button id="pnr" type="submit">PNR Status</button>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,70 @@
+<html>
+    <title>Reset Your Password</title>
+    <head>
+        <style>
+            body{
+                background-image: url("/images/gorre2.jpg");
+                background-size: 100%;
+            }
+            #div1{
+                position: absolute;
+                border-radius: 10pt;
+                background: rgba(255,255,255,0.3);
+                border-style: solid;
+                border-color:transparent;
+                border-width: 2pt;
+                left:200pt;
+                top:50pt;
+                width:300pt;
+                height:120pt;
+                z-index: 1;
+            }
+            #email{
+                position: absolute;
+                border-radius: 5pt;
+                border-color: royalblue;
+                border-style: solid;
+                left:10pt;
+                top:20pt;
+                width:280pt;
+                height:30pt;
+                padding-left: 10pt;
+            }
+            #upd_pass{
+                position: absolute;
+                border-radius: 5pt;
+                left:10pt;
+                top:70pt;
+                width:280pt;
+                height:30pt;
+                background-color: royalblue;
+                border-color: royalblue;
+                color: white;
+                font-size: 12pt;
+                font-weight: bold;
+            }
+            #div0{
+                position: absolute;
+                border-radius: 0pt;
+                border-style: solid;
+                border-width: 2pt;
+                border-color: transparent;
+                border-bottom-color: royalblue;
+                background:rgba(255,255,255,0.3);
+                left:200pt;
+                top:30pt;
+                width:300pt;
+                height:20pt;
+                z-index: 2;
+            }
+        </style>
+    </head>
+    <body>
+        <form action = "pass_reset_link" id = "login_details" method = "POST">
+        <div id="div1">
+            <input id = "email" name="email" type="email" placeholder="Enter E-mail">
+            <button id="upd_pass" type="submit">Send Password Reset Link</button>
+        </div>
+        </form>
+    </body>
+</html>

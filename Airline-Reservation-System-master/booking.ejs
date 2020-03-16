@@ -1,0 +1,267 @@
+<html>
+    <title>FlyWithJoy</title>
+    <head>
+        <style>
+            body{
+                background-image: url("/images/gorre2.jpg");
+                background-size: 100%;
+            }
+            #logout{
+                position: absolute;
+                border-radius: 5pt;
+                left:1080pt;
+                top:8pt;
+                width:60pt;
+                height:25pt;
+                background-color: royalblue;
+                border-color: royalblue;
+                color: white;
+                font-size: 12pt;
+                font-weight: bold;
+                z-index: 10;
+            }
+            #top{
+                position: absolute;
+                border-radius: 0pt;
+                background: rgba(255,255,255,0.3);
+                border-style: solid;
+                border-color:transparent;
+                border-width: 2pt;
+                border-radius: 5pt;
+                top:5pt;
+                width:98.5%;
+                height:50pt;
+                z-index: 1;
+            }
+            #header{
+                font-size: 40pt;
+                font-weight: bold;
+                font-family: consolas;
+            }
+            #usrname{
+                position: absolute;
+                z-index: 4;
+                left: 85%;
+                top:33pt;
+                font-size: 13pt;
+                font-family: arial;
+            }
+            #nav{
+                position: absolute;
+                border-radius: 0pt;
+                background: rgba(255,255,255,0.3);
+                border-style: solid;
+                border-color:transparent;
+                border-width: 2pt;
+                border-radius: 5pt;
+                top:70pt;
+                width:98.5%;
+                height:20pt;
+                z-index: 1;
+            }
+            #pnr{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 750pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #home{
+                position: absolute;
+                background: transparent;
+                left: 0pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #home:hover,#prof:hover,#book:hover,#prm:hover,#mybk:hover,#pnr:hover{
+                cursor: pointer;
+            }
+            #prof{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 150pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #book{
+                position: absolute;
+                background: transparent;
+                background: rgba(255,255,255,0.5);
+                top: 0pt;
+                left: 300pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #div0{
+                width: 800pt;
+                height: 250pt;
+                position: absolute;
+                top: 120pt;
+                left: 170pt;
+                background:rgba(255, 255, 255, 0.3)
+            }
+            #from{
+                position: absolute;
+                border-radius: 5pt;
+                border-color: royalblue;
+                border-style: solid;
+                left:85pt;
+                top:40pt;
+                width:280pt;
+                height:30pt;
+                padding-left: 10pt;
+            }
+            #to{
+                position: absolute;
+                border-radius: 5pt;
+                border-color: royalblue;
+                border-style: solid;
+                left:450pt;
+                top:40pt;
+                width:280pt;
+                height:30pt;
+                padding-left: 10pt;
+            }
+            #date{
+                position: absolute;
+                border-radius: 5pt;
+                border-color: royalblue;
+                border-style: solid;
+                left:140pt;
+                top:100pt;
+                width:280pt;
+                height:30pt;
+                padding-left: 10pt;
+            }
+            #class{
+                position: absolute;
+                border-radius: 5pt;
+                border-color: royalblue;
+                border-style: solid;
+                border-width: 2pt;
+                left:485pt;
+                top:100pt;
+                width:280pt;
+                height:30pt;
+                padding-left: 10pt;
+            }
+            #from_l{
+                position: absolute;
+                left:40pt;
+                top:48pt;
+                font-size: 12pt;
+                font-weight: bold;
+                font-family: arial;
+            }
+            #to_l{
+                position: absolute;
+                left:420pt;
+                top:48pt;
+                font-size: 12pt;
+                font-weight: bold;
+                font-family: arial;
+            }
+            #mybk{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 600pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #date_l{
+                position: absolute;
+                left:40pt;
+                top:108pt;
+                font-size: 12pt;
+                font-weight: bold;
+                font-family: arial;
+            }
+            #class_l{
+                position: absolute;
+                left:440pt;
+                top:108pt;
+                font-size: 12pt;
+                font-weight: bold;
+                font-family: arial;
+            }
+            #search{
+                position: absolute;
+                border-radius: 5pt;
+                left:250pt;
+                top:170pt;
+                width:280pt;
+                height:30pt;
+                background-color: royalblue;
+                border-color: royalblue;
+                color: white;
+                font-size: 12pt;
+                font-weight: bold;
+                cursor: pointer;
+            }
+            #prm{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 450pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="login.js"></script>
+        <form action="logout" method="POST">
+            <button id="logout" type="submit">Logout</button>
+        </form>
+        <div id="top">
+            <label id="header">FlyWithJoy</label>
+            <label id="usrname">Hello, <%=name1%></label>
+        </div>
+        <div id="nav">
+            <form action="nav_home" method="POST">
+                <button id="home" type="submit">Home</button>
+            </form>
+            <form action="nav_profile" method="POST">
+                <button id="prof" type="submit">Profile</button>
+            </form>
+            <form action="nav_booking" method="POST">
+                <button id="book" type="submit">Book Your Ticket</button>
+            </form>
+            <form action="nav_promo" method="POST">
+                <button id="prm" type="submit">Promo Codes</button>
+            </form>
+            <form action="nav_mybook" method="POST">
+                <button id="mybk" type="submit">My Bookings</button>
+            </form>
+            <form action="nav_pnr" method="POST">
+                <button id="pnr" type="submit">PNR Status</button>
+            </form>
+        </div>
+        <div id="div0">
+            <form action="search_flights" method="POST">
+            <label id="from_l">From:</label>
+            <label id="to_l">To:</label>
+            <label id="date_l">Departure Date:</label>
+            <label id="class_l">Class:</label>
+            <input id="from" name="from" type="text" placeholder="From">
+            <input id="to" name="to" type="text" placeholder="To">
+            <input id="date" name="date" type="date" placeholder="Departure Date" required>
+            <select id="class" name="class">
+                <option value="Economy">Economy</option>
+                <option value="Premium Economy">Premium Economy</option>
+                <option value="Business Class">Business Class</option>
+            </select>
+            <button id="search" type="submit">Search Flights</button>
+        </form>
+        </div>
+    </body>
+</html>

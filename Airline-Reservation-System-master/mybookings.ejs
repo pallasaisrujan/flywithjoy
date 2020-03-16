@@ -1,0 +1,240 @@
+<html>
+    <title>FlyWithJoy</title>
+    <head>
+        <style>
+            body{
+                background-image: url("/images/gorre2.jpg");
+                background-size: 100%;
+            }
+            #logout{
+                position: absolute;
+                border-radius: 5pt;
+                left:1080pt;
+                top:8pt;
+                width:60pt;
+                height:25pt;
+                background-color: royalblue;
+                border-color: royalblue;
+                color: white;
+                font-size: 12pt;
+                font-weight: bold;
+                z-index: 10;
+            }
+            #top{
+                position: absolute;
+                border-radius: 0pt;
+                background: rgba(255,255,255,0.3);
+                border-style: solid;
+                border-color:transparent;
+                border-width: 2pt;
+                border-radius: 5pt;
+                top:5pt;
+                width:98.5%;
+                height:50pt;
+                z-index: 1;
+            }
+            #header{
+                font-size: 40pt;
+                font-weight: bold;
+                font-family: consolas;
+            }
+            #usrname{
+                position: absolute;
+                z-index: 4;
+                left: 85%;
+                top:33pt;
+                font-size: 13pt;
+                font-family: arial;
+            }
+            #nav{
+                position: absolute;
+                border-radius: 0pt;
+                background: rgba(255,255,255,0.3);
+                border-style: solid;
+                border-color:transparent;
+                border-width: 2pt;
+                border-radius: 5pt;
+                top:70pt;
+                width:98.5%;
+                height:20pt;
+                z-index: 1;
+            }
+            #pnr{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 750pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #home{
+                position: absolute;
+                background: transparent;
+                left: 0pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #home:hover,#prof:hover,#book:hover,#prm:hover,#mybk:hover,#pnr:hover{
+                cursor: pointer;
+            }
+            #prof{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 150pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #book{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 300pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #prm{
+                position: absolute;
+                background: transparent;
+                top: 0pt;
+                left: 450pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            #mybk{
+                position: absolute;
+                background: transparent;
+                background: rgba(255,255,255,0.5);
+                top: 0pt;
+                left: 600pt;
+                border-style: none;
+                height: 20pt;
+                width: 150pt;
+            }
+            table{
+                position: absolute;
+                left: 50pt;
+                top:150pt;
+                width: 50%;
+                background:rgba(255, 255, 255, 0.6);
+            }
+            td{
+                font-size: 13pt;
+                text-align: center;
+            }
+            table,th,td{
+                border: 2px solid black;
+                border-collapse: collapse;
+            }
+            #error{
+                position: absolute;
+                left: 430pt;
+                top:250pt;
+                font-size: 15pt;
+                font-family: arial;
+                font-weight: bold;
+            }
+        </style>
+        <script>
+            var i = 0;
+            var bdate  = [];
+            var bdatez = "<%= bdate2 %>";
+            bdate = JSON.parse(bdatez.replace(/&#34;/g,'\"'));
+            //console.log(pcode);
+            var bname = [];
+            var bnamez = "<%= bname2 %>";
+            bname = JSON.parse(bnamez.replace(/&#34;/g,'\"'));
+            var bid = [];
+            var bidz = "<%= bid2 %>";
+            bid = JSON.parse(bidz.replace(/&#34;/g,'\"'));
+            var n = "<%= len3 %>";
+            //console.log(n);
+            //console.log(fname,ffrom,fto,fdep,farr);
+            i = 0;
+            function st(){
+                //console.log(fname);
+                if(n == 0){
+                    document.getElementById('error').innerHTML = "No Bookings.";
+                    return;
+                }
+                document.getElementById('bdate0').innerHTML = bdate[0];
+                document.getElementById('bname0').innerHTML = bname[0];
+                document.getElementById('bid0').innerHTML = bid[0];
+                i = i + 1;
+                while(i!=n){
+                createRow(i);
+                i = i + 1;
+            }
+            }
+            function createRow(i) {
+      var row = document.createElement('tr'); // create row node
+      var col = document.createElement('td'); // create column node
+      var col2 = document.createElement('td'); // create second column node
+      var col3 = document.createElement('td');
+      row.appendChild(col); // append first column to row
+      row.appendChild(col2); // append second column to row
+      row.appendChild(col3);
+      col.id = "bdate" + i;
+      col2.id = "bname" + i;
+      col3.id = "bid" + i;
+      col.innerHTML = bdate[i]; // put data in first column
+      col2.innerHTML = bname[i]; // put data in second column
+      col3.innerHTML = bid[i];
+      var table = document.getElementById("my_result"); // find table to append to
+      table.appendChild(row); // append row to table
+    }
+        </script>
+    </head>
+    <body onload="st()">
+        <script src="login.js"></script>
+        <form action="logout" method="POST">
+            <button id="logout" type="submit">Logout</button>
+        </form>
+        <div id="top">
+            <label id="header">FlyWithJoy</label>
+            <label id="usrname">Hello, <%=name1%></label>
+        </div>
+        <div id="nav">
+            <form action="nav_home" method="POST">
+                <button id="home" type="submit">Home</button>
+            </form>
+            <form action="nav_profile" method="POST">
+                <button id="prof" type="submit">Profile</button>
+            </form>
+            <form action="nav_booking" method="POST">
+                <button id="book" type="submit">Book Your Ticket</button>
+            </form>
+            <form action="nav_promo" method="POST">
+                <button id="prm" type="submit">Promo Codes</button>
+            </form>
+            <form action="nav_mybook" method="POST">
+                <button id="mybk" type="submit">My Bookings</button>
+            </form>
+            <form action="nav_pnr" method="POST">
+                <button id="pnr" type="submit">PNR Status</button>
+            </form>
+        </div>
+        <table id="my_result">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Flight Name</th>
+                <th>Ticket ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="row0">
+                <td id="bdate0"></td>
+                <td id="bname0"></td>
+                <td id="bid0"></td>
+              </tr>
+            </tbody>
+        </table>
+        <p id="error"></p>
+    </body>
+</html>

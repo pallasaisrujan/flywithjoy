@@ -1,0 +1,145 @@
+<html>
+    <title>Login</title>
+    <head>
+        <style>
+            body{
+                background-image: url("/images/gorre2.jpg");
+                background-size: 100%;
+            }
+            #div1{
+                position: absolute;
+                border-radius: 0pt;
+                background: rgba(255,255,255,0.3);
+                border-style: solid;
+                border-color:transparent;
+                border-width: 2pt;
+                left:200pt;
+                top:50pt;
+                width:300pt;
+                height:215pt;
+                z-index: 1;
+            }
+            #email{
+                position: absolute;
+                border-radius: 5pt;
+                border-color: royalblue;
+                border-style: solid;
+                left:10pt;
+                top:30pt;
+                width:280pt;
+                height:30pt;
+                padding-left: 10pt;
+            }
+            #pass{
+                position: absolute;
+                border-radius: 5pt;
+                border-color: royalblue;
+                border-style: solid;
+                left:10pt;
+                top:70pt;
+                width:280pt;
+                height:30pt;
+                padding-left: 10pt;
+            }
+            #login{
+                position: absolute;
+                border-radius: 5pt;
+                left:10pt;
+                top:130pt;
+                width:280pt;
+                height:30pt;
+                background-color: royalblue;
+                border-color: royalblue;
+                color: white;
+                font-size: 12pt;
+                font-weight: bold;
+                cursor: pointer;
+            }
+            #div0{
+                position: absolute;
+                border-radius: 0pt;
+                border-style: solid;
+                border-width: 2pt;
+                border-color: transparent;
+                border-bottom-color: royalblue;
+                background:rgba(255,255,255,0.3);
+                left:200pt;
+                top:30pt;
+                width:300pt;
+                height:20pt;
+                z-index: 2;
+            }
+            #login_a{
+                position: absolute;
+                background-color: transparent;
+                border-style: solid;
+                border-color: transparent;
+                border-bottom-color: blue;
+                width:150pt;
+                height:20pt;
+            }
+            #login_a:hover{
+                border-style: solid;
+                border-color: transparent;
+                border-bottom-color: blue;
+                cursor: pointer;
+            }
+            #signup_a{
+                position: absolute;
+                left: 150pt;
+                background:transparent;
+                border-style: solid;
+                border-color: transparent;
+                width:150pt;
+                height:20pt;
+            }
+            #signup_a:hover{
+                border-style: solid;
+                border-color: transparent;
+                border-bottom-color: blue;
+                cursor: pointer;
+            }
+            #signup_h{
+                position: absolute;
+                left: 70pt;
+                top: 160pt;
+                z-index: 5;
+            }
+            #signup_anc{
+                position: absolute;
+                left: 185pt;
+                top: 171pt;
+            }
+            #forgot_anc{
+                position: absolute;
+                left: 90pt;
+                top: 192pt;
+            }
+            a{
+                text-decoration: none;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            function redirect(){
+                document.location.href = "signup.html"
+            }
+        </script>
+        <div id="div0">
+            <button id="login_a" type="submit" onclick="">Login</button>
+            <button id="signup_a" type="submit" onclick="redirect()">Sign Up</button>
+        </div>
+        <form action = "login_post" id = "login_details" method = "POST">
+        <div id="div1">
+            <input id = "email" name="email" type="email" placeholder="Enter E-mail">
+            <input id="pass" name="pass" type="password" placeholder="Enter password">
+            <button id="login" type="submit">Login</button>
+            <p id="signup_h">Don't have an account?</p>
+            <a id="signup_anc" href="signup.html">Create One!</a>
+            <a id="forgot_anc" href="forgot_pass.html">Forgot Your Password ?</a>
+        </div>
+        </form>
+    </body>
+</html>
